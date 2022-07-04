@@ -18,6 +18,13 @@ public class BookService {
     public List<Book> getByName(String name){
         return repository.findByBookPKName(name);
     }
+
+    /*
+        The method
+            findByBookPKNameAndBookPKTopic and
+            findById
+        both are same as here composite key is the id only :)
+     */
     public Book getByNameAndTopic(String name, String topic){
         //return repository.findByBookPKNameAndBookPKTopic(name, topic);
         BookPK bookpk = new BookPK();
@@ -25,6 +32,10 @@ public class BookService {
         bookpk.setTopic(topic);
         return repository.findById(bookpk).get();
 
+    }
+    public Book getByNameAndTopic(BookPK bookPK){
+        //return repository.findById(bookpk).get();
+        return repository.findByBookPKNameAndBookPKTopic(bookPK.getName(), bookPK.getTopic());
     }
     public List<Book> getByNameAndAuthor(String name, String author){
         return repository.findByBookPKNameAndAuthor(name, author);

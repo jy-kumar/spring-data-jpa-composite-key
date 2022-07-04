@@ -30,14 +30,17 @@ public class BookController {
     public List<Book> getByAuthor(String author){
         return service.getByAuthor(author);
     }
+
     @GetMapping("/book/topic/{topic}")
     public List<Book> getByTopic(String topic){
         return service.getByTopic(topic);
     }
+
     @GetMapping("/book/topic/{topic}/price/{price}")
     public List<Book> getByTopicAndPrice(String topic, Double price){
         return service.getByTopicAndPrice(topic,price);
     }
+
     @GetMapping("/book/topic/{topic}/price/{priceFrom}/{priceTo}")
     public List<Book> getByTopicAndPriceBetween(String topic, Double priceFrom, Double priceTo){
         return service.getByTopicAndPriceBetween(topic,priceFrom,priceTo);
@@ -46,6 +49,11 @@ public class BookController {
     @GetMapping("/book/name/{name}/topic/{topic}")
     public Book getByNameAndTopic(String name, String topic){
         return service.getByNameAndTopic(name, topic);
+    }
+
+    @GetMapping("/book/id")
+    public Book getByNameAndTopic(@RequestBody BookPK bookPK){
+        return service.getByNameAndTopic(bookPK);
     }
 
     @GetMapping("/book/name/{name}/author/{author}")
